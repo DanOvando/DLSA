@@ -2,6 +2,7 @@
 % Please edit documentation in R/AddMissingFish.R
 \name{AddMissingFish}
 \alias{AddMissingFish}
+\title{AddMissingFish adds in zero observations for missing fish}
 \usage{
 AddMissingFish(Data)
 }
@@ -9,6 +10,9 @@ AddMissingFish(Data)
 \item{Data}{}
 }
 \value{
-Data with missing observations added in
+data with missing observations added in
+}
+\description{
+AddMissingFish adds in zero observations for missing fish
 }
 

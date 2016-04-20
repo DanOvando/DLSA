@@ -1,11 +1,10 @@
-# AddMissingFish his code adds "zero" counts for all species ever observed at a site but not observed on a given trip
+#' AddMissingFish adds in zero observations for missing fish
 #'
 #' @param Data
 #'
-#' @return Data with missing observations added in
+#' @return data with missing observations added in
 #' @export
-AddMissingFish<- function(Data)
-{
+AddMissingFish<- function(Data) {
 
   #   Data<- GFD
   LifeStart<- which(colnames(Data)=='Rockfish')
