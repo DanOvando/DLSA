@@ -1,0 +1,19 @@
+Package: DLSA
+Title: Library Data Limited Stock Assessment Modules
+Version: 0.0.0.9000
+Authors@R: person("Dan", "Ovando", email = "dovando@bren.ucsb.edu", role = c("aut", "cre"))
+Description: This is just a respository for a series of data limited stock
+    assessments that I've collected and coded over the year. Attribution is not
+    great so lets keep it close for now
+Depends:
+    R (>= 3.1.2),
+    dplyr,
+    tidyr,
+    broom,
+    ggplot2,
+    lmtest,
+    sandwich
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 5.0.1
