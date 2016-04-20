@@ -1,8 +1,15 @@
+#' FindFishbase
+#'
+#' @param Data
+#'
+#' @return Fishbase life history
+#' @export
 FindFishbase<- function(Data)
 {
 
 #    Data<- GFD
-  load('Data/mpack.Rdata')
+  data(mpack)
+  # load('Data/mpack.Rdata')
 
  Fishbase<- mpack$lh
 
