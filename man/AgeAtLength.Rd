@@ -2,8 +2,7 @@
 % Please edit documentation in R/AgeAtLength.R
 \name{AgeAtLength}
 \alias{AgeAtLength}
-\title{AgeAtLength 
-returns the age at length for a Von Bert relationship}
+\title{AgeAtLength returns the age at length for a Von Bert relationship}
 \usage{
 AgeAtLength(Lengths, Fish, Error)
 }
@@ -18,7 +17,6 @@ AgeAtLength(Lengths, Fish, Error)
 a vector of ages at length
 }
 \description{
-AgeAtLength 
-returns the age at length for a Von Bert relationship
+AgeAtLength returns the age at length for a Von Bert relationship
 }
 
