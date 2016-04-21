@@ -269,7 +269,7 @@ LBSPR<-function(LengthDat,EstimateM,Iterations,BootStrap,LifeError,LengthBins,Re
 
   Output$SampleSize<- SampleSize$Samples
 
-  MCOutput<- join(MCOutput,SampleSize,by='Year')
+  MCOutput<- left_join(MCOutput,SampleSize,by='Year')
 
   FOutput<- MCDetails %>%
     group_by(Year) %>%
@@ -329,7 +329,7 @@ LBSPR<-function(LengthDat,EstimateM,Iterations,BootStrap,LifeError,LengthBins,Re
             + xlab('Year')+ylab('SPR'))
       dev.off()
 
-      MCDetails<- join(MCDetails,SampleSize,by='Year')
+      MCDetails<- left_join(MCDetails,SampleSize,by='Year')
       pdf(file=paste(FigureFolder,' LBSPR FvM Boxplots.pdf',sep=''))
       print(ggplot(data=MCDetails,aes(factor(Year),FvM,fill=Samples))+geom_boxplot(varwidth=F) +
               scale_fill_gradient(low = 'red', high = 'green')
@@ -349,7 +349,7 @@ LBSPR<-function(LengthDat,EstimateM,Iterations,BootStrap,LifeError,LengthBins,Re
             +xlab('Year')+ylab('SPR'))
       dev.off()
 
-      MCDetails<- join(MCDetails,SampleSize,by='Year')
+      MCDetails<- left_join(MCDetails,SampleSize,by='Year')
       pdf(file=paste(FigureFolder,' LBSPR FvM Boxplots.pdf',sep=''))
       print(ggplot(data=MCDetails,aes(factor(Year),FvM))+geom_boxplot(varwidth=F)
             +xlab('Year')+ylab('F/M'))
