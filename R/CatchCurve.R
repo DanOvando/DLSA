@@ -79,7 +79,6 @@ CatchCurve<- function(LengthDat,CatchCurveWeight,WeightedRegression, ReserveYr,O
 
   CCWeight<- CatchCurveWeight
 
-#   SampleSizeSummary<- ddply(LengthDat,c('Year'),summarize,SampleSize=length(Length))
 
   SampleSizeSummary<- LengthDat %>%
     group_by(Year) %>%
@@ -494,9 +493,6 @@ CatchCurve<- function(LengthDat,CatchCurveWeight,WeightedRegression, ReserveYr,O
 
     MCDetails$WeightedSample<- (1-Fish$Alpha)*MCDetails$SampleSize/max(MCDetails$SampleSize,na.rm=T)
 
-#     MeanNaturalMort <- ddply(MCDetails,c('Iteration'),summarize,
-#                           MeanNaturalMort=sum(NaturalMortality*(WeightedYear+WeightedSample),na.rm=T)/sum(WeightedYear+WeightedSample,na.rm=T))
-#
     MeanNaturalMort <- MCDetails %>%
       group_by(Iteration) %>%
       summarize(MeanNaturalMort=sum(NaturalMortality*(WeightedYear+WeightedSample),na.rm=T)/sum(WeightedYear+WeightedSample,na.rm=T))

@@ -9,7 +9,9 @@
 CheckLengthSampleSize<- function(Data)
 {
   #   Data<- LengthData
-  SampleSize<- ddply(Data,c('Year'),summarize,SampleSize=length(Length))
+  SampleSize<- Data %>%
+    group_by(Year) %>%
+      summarize(SampleSize=length(Length))
 
   SufficientSamples<- SampleSize$SampleSize>MinSampleSize
 

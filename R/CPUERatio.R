@@ -64,7 +64,10 @@ CPUERatio<- function(CPUEDat,LagLength,Weight,Form,Iterations,BootStrap)
 
   BaseFish<- Fish
 
-  SampleSize<- ddply(CPUEDat,c('Year'),summarize,SampleSize=sum(Count,na.rm=T))
+  SampleSize<- CPUEDat %>%
+    group_by(Year) %>%
+      summarize(SampleSize=sum(Count,na.rm=T))
+  
   for (i in 1:Iterations)
   {
 
@@ -138,7 +141,6 @@ CPUERatio<- function(CPUEDat,LagLength,Weight,Form,Iterations,BootStrap)
         TempCPUEDat<- TempCPUEStorage
       }
 
-      #       ddply(TempCPUEDat,c('Year','MPA'),summarize,Count=sum(Count))
       WeightedCPUE<- CalculateCPUE(TempCPUEDat,LaggedYears,weights,Form)
 
       inside<- WeightedCPUE$MPACPUE

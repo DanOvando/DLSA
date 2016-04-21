@@ -50,12 +50,7 @@ FormatCCFRPData<- function(Data)
   # Format Density Data -----------------------------------------------------
   Data$Weight<- Fish$WeightA* Data$length_cm ^ Fish$WeightB
 
-  #   DensityData<- ddply(Data,c('Year','Month','sample_Idcellday'),plyr::summarize,Site='All',Count=sum(length_cm>0 | is.na(length_cm),na.rm=T),Biomass=sum(Weight,na.rm=T)
-  #                       ,SampleArea= mean(Sample_Area,na.rm=T),AreaUnits=unique(Area_units),DistanceFromBorder=mean(Meters.to.MPA.border,na.rm=T)
-  #                       ,SampleType=unique(Sample_Type),MPA=unique(MPA_or_REF),
-  #                       DistanceProtected=mean(Meters.to.MPA.border,na.rm=T),MeanLongitude=mean(MeanLon,na.rm=T),
-  #                       MeanLatitude=mean(MeanLat,na.rm=T),SiteType=unique(SiteId),Fish=unique(CommName))
-  #
+
   DensityData<- Data %>%
     group_by(Year,Month,sample_Idcellday) %>%
     summarize(Count=sum(length_cm>0 | is.na(length_cm),na.rm=T),Biomass=sum(Weight,na.rm=T)

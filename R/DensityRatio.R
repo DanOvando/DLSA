@@ -69,7 +69,10 @@ DensityRatio<- function(DenDat,LagLength,Weight,Form,Iterations,BootStrap)
 
   BaseFish<- Fish
 
-  SampleSize<- ddply(DenDat,c('Year'),summarize,SampleSize=sum(Count,na.rm=T))
+  SampleSize<- DenDat %>% 
+    group_by(Year) %>% 
+    summarize(SampleSize=sum(Count,na.rm=T))
+  
   for (i in 1:Iterations)
   {
 
@@ -142,8 +145,6 @@ DensityRatio<- function(DenDat,LagLength,Weight,Form,Iterations,BootStrap)
 
         TempDenDat<- TempDenStorage
       }
-
-      #       ddply(TempDenDat,c('Year','MPA'),summarize,Count=sum(Count))
 
       WeightedDensity<- CalculateDensity(TempDenDat,LaggedYears,weights,Form)
 

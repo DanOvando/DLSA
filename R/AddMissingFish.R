@@ -11,15 +11,10 @@ AddMissingFish<- function(Data) {
 
   SpeciesTable<- unique(Data [,colnames(Data)[LifeStart:dim(Data)[2]]])
 
-  #   SpeciesSightings<- ddply(Data,c('Site','CommName'),summarize,There=length(CommName))
 
   SpeciesSightings<- Data %>%
     group_by(Site,CommName) %>%
     summarize(There=length(CommName))
-
-  #     ddply(Data,c('Site','CommName'),summarize,There=length(CommName))
-
-  #   SpeciesSightingsByTrip<- ddply(Data,c('sample_Idcellday'),summarize,SpeciesSeen=length(unique(CommName)))
 
   SpeciesSightingsByTrip<- Data %>%
     group_by(sample_Idcellday) %>%

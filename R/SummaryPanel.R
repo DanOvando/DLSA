@@ -23,10 +23,13 @@ SummaryPanel<- function(AssessData,LengthDat,CPUEDat,Species,Site,YearsToSmooth,
 
   levels(LengthDat$MPA)<- c('Fished','MPA')
 
-  MeanLength<- ddply(LengthDat,c('Year','MPA'),summarize,MeanLength=mean(Length,na.rm=T))
+  MeanLength<- LengthDat %>% 
+    group_by(Year,MPA) %>% 
+    summarize(MeanLength=mean(Length,na.rm=T))
 
-
-  CPUESummary<- ddply(CPUEDat,c('Year','MPA'),summarize,NumberCPUE=mean(Count/AnglerHours,na.rm=T),BiomassCPUE=mean(Biomass/AnglerHours,na.rm=T))
+  CPUESummary<- CPUEDat %>% 
+    group_by(Year, MPA) %>% 
+    summarize(NumberCPUE=mean(Count/AnglerHours,na.rm=T),BiomassCPUE=mean(Biomass/AnglerHours,na.rm=T))
 
   CPUESummary$SiteType[CPUESummary$MPA==0]<- 'Fished'
 

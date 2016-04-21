@@ -14,14 +14,12 @@ PlotCPUEData<- function(CPUEDat,FigureFolder,Fish,Species,Site,Theme)
 {
 
   #   DensityDat<- DensityData
-#   CPUESummary<- ddply(CPUEDat,c('Year','MPA'),summarize,NumberCPUE=mean(Count/AnglerHours,na.rm=T),BiomassCPUE=mean(Biomass/AnglerHours,na.rm=T))
   CPUESummary<- CPUEDat %>%
     group_by(Year,MPA) %>%
       summarize(NumberCPUE=mean(Count/AnglerHours,na.rm=T),BiomassCPUE=mean(Biomass/AnglerHours,na.rm=T))
 
 #     summarize(NumberCPUE=sum(Count,na.rm=T)/sum(AnglerHours,na.rm=T),BiomassCPUE=sum(Biomass,na.rm=T)/sum(AnglerHours,na.rm=T))
 
-#     ddply(CPUEDat,c('Year','MPA'),summarize,NumberCPUE=mean(Count/AnglerHours,na.rm=T),BiomassCPUE=mean(Biomass/AnglerHours,na.rm=T))
 
   CPUESummary$SiteType[CPUESummary$MPA==0]<- 'Fished'
 
