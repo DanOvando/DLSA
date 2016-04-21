@@ -501,7 +501,7 @@ CatchCurve<- function(LengthDat,CatchCurveWeight,WeightedRegression, ReserveYr,O
       group_by(Iteration) %>%
       summarize(MeanNaturalMort=sum(NaturalMortality*(WeightedYear+WeightedSample),na.rm=T)/sum(WeightedYear+WeightedSample,na.rm=T))
 
-    MCDetails<- join(MCDetails,MeanNaturalMort,by='Iteration')
+    MCDetails<- left_join(MCDetails,MeanNaturalMort,by='Iteration')
 
     MCDetails$FishingMortality<- MCDetails$TotalMortality-MCDetails$MeanNaturalMort
 
