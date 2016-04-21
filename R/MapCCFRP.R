@@ -1,27 +1,33 @@
+#' Map CCFRP Data
+#'
+#' @param Data
+#'
+#' @return
+#' @export
 MapCCFRP<- function(Data)
 {
-  
+
   ## Map length data ##
-  
+
   LengthData<- Data$LengthData %>% subset(is.na(SiteType)==F)
-  
+
   MapDat<- LengthData %>%
     group_by(SiteType,Year,Fish) %>%
     summarize(MeanLength=mean(Length,na.rm=T),Lon=mean(MeanLongitude),
                  Lat=mean(MeanLatitude),Reserve=unique(MPA))
-  
+
   MapDat$MPA[MapDat$Reserve==0]<- 'Reference'
-  
+
   MapDat$MPA[MapDat$Reserve==1]<- 'Reserve'
-  
+
   CentralCoast<- get_map(location=c(lon=mean(MapDat$Lon),lat=mean(MapDat$Lat)),zoom=8,maptype='hybrid')
-  
+
   Years<- unique(MapDat$Year)
-  
+
   BaseDir<- getwd()
-  
+
 #   setwd(FigureFolder)
-#   
+#
 #   saveGIF(
 # {
 #   for (y in Years)
@@ -32,9 +38,9 @@ MapCCFRP<- function(Data)
 #           +scale_size_continuous(range=c(2,10),name='Mean Length (cm)')+
 #             scale_color_manual(name='',values=c(FishedColor,MPAColor)))
 #   }
-#   
+#
 # },movie.name='MPA Average Size Movie.gif',imgdir=FigureFolder)
-# 
+#
 # setwd(BaseDir)
 
 
@@ -83,7 +89,7 @@ Years<- unique(MapDat$Year)
 
 
 # setwd(FigureFolder)
-# 
+#
 # saveGIF(
 # {
 #   for (y in Years)
@@ -94,7 +100,7 @@ Years<- unique(MapDat$Year)
 #           +scale_size_continuous(range=c(2,10),name='Density (kg/km2)')+
 #             scale_color_manual(name='',values=c(FishedColor,MPAColor)))
 #   }
-#   
+#
 # },movie.name='MPA Density Movie.gif',imgdir=FigureFolder)
 
 # setwd(BaseDir)

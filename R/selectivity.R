@@ -1,4 +1,4 @@
-#' Title
+#' Calculate Selectivity
 #'
 #' @param length
 #' @param shape

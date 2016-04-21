@@ -2,7 +2,7 @@
 % Please edit documentation in R/selectivity.R
 \name{selectivity}
 \alias{selectivity}
-\title{Title}
+\title{Calculate Selectivity}
 \usage{
 selectivity(length, shape, form = "logistic")
 }
@@ -13,6 +13,6 @@ selectivity(length, shape, form = "logistic")
 return selectivity at length ogive
 }
 \description{
-Title
+Calculate Selectivity
 }
 

@@ -1,17 +1,24 @@
+#' Plot Catch data
+#'
+#' @param CatchDat
+#' @param FigureFolder
+#'
+#' @return
+#' @export
 PlotCatchData<- function(CatchDat,FigureFolder)
 {
-  
+
   library(zoo,quietly = T)
   # CatchDat=CatchData
-  
+
   InterpCatch<- na.approx(CatchDat$Catch)
-  
+
   InterpMarker=as.numeric(is.na(CatchDat$Catch))
-  
+
   PointStyle=21*InterpMarker
   PointStyle[PointStyle==0]<- 16
-  
-  pdf(file=paste(FigureFolder,' Catch History.pdf',sep=''),width=7,height=4) 
+
+  pdf(file=paste(FigureFolder,' Catch History.pdf',sep=''),width=7,height=4)
   par(mai=c(1,1,1,1.5))
   Month<- CatchDat$Month
   Month[Month==-999]<- 'Total'
@@ -20,5 +27,5 @@ PlotCatchData<- function(CatchDat,FigureFolder)
   axis(1,at=1:length(TimeName),labels=TimeName,las=0)
   legend('right',pch=c(16,21),col=c(1,2),legend=c('Real','Interpolated'),xpd=T,bty='n',inset=-.3)
   dev.off()
-  
+
 }

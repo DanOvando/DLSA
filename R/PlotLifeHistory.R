@@ -1,3 +1,7 @@
+#' Plot Life History
+#'
+#' @return
+#' @export
 PlotLifeHistory<- function()
 {
 
